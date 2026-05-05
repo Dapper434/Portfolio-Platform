@@ -5,17 +5,12 @@ import SearchBar from './components/SearchBar'
 import { useProjectFilter } from './hooks/useProjectFilter'
 import './App.css'
 
-// Default data so the page isn't empty on first load.
-const starterProjects = [
-  { id: 'p1', title: 'Project 1', description: 'Project Description' },
-  { id: 'p2', title: 'Project 2', description: 'Project Description' },
-  { id: 'p3', title: 'Project 3', description: 'Project Description' },
-]
+const starterProjects = []
 
 function App() {
   const [projects, setProjects] = useState(starterProjects)
   const [searchTerm, setSearchTerm] = useState('')
-  const [nextProjectNumber, setNextProjectNumber] = useState(4)
+  const [nextProjectNumber, setNextProjectNumber] = useState(1)
 
   // essence of enabling filter(to have clean code)
   const filteredProjects = useProjectFilter(projects, searchTerm)
@@ -32,18 +27,37 @@ function App() {
   return (
     <main className="app-shell">
       <header className="app-header">
-        <h1>Personal Project Showcase App</h1>
+        <div>
+          <h1>Personal Project Showcase</h1>
+          <p className="app-subtitle">
+            Add your work, then search and share it.
+          </p>
+        </div>
       </header>
 
-      <ProjectForm onAddProject={handleAddProject} />
+      <section className="app-layout" aria-label="Project showcase">
+        <aside className="panel sidebar" aria-label="Add a project">
+          <ProjectForm onAddProject={handleAddProject} />
+        </aside>
 
-      <section className="projects-panel" aria-label="Projects">
-        <SearchBar
-          value={searchTerm}
-          onChange={setSearchTerm}
-          placeholder="Search Projects"
-        />
-        <ProjectList projects={filteredProjects} />
+        <section className="panel content" aria-label="Projects">
+          <div className="content-header">
+            <div>
+              <h2 className="content-title">Projects</h2>
+              <p className="content-meta">
+                Showing {filteredProjects.length} of {projects.length}
+              </p>
+            </div>
+
+            <SearchBar
+              value={searchTerm}
+              onChange={setSearchTerm}
+              placeholder="Search projects…"
+            />
+          </div>
+
+          <ProjectList projects={filteredProjects} />
+        </section>
       </section>
     </main>
   )
