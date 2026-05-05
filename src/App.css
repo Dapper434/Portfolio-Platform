@@ -1,0 +1,159 @@
+.app-shell {
+  width: min(860px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1rem 2.5rem;
+}
+
+.app-header {
+  border-bottom: 1px solid #1f1f1f;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.panel,
+.projects-panel {
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background-color: #fff;
+}
+
+.add-project-panel {
+  margin-bottom: 1.5rem;
+}
+
+.add-project-panel h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.add-project-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.add-project-form label {
+  font-size: 1.05rem;
+}
+
+.add-project-form input,
+.add-project-form textarea,
+.search-wrapper input {
+  width: 100%;
+  border: 1px solid #252525;
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.7rem 0.75rem;
+  box-sizing: border-box;
+}
+
+.add-project-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.add-project-form button {
+  width: 130px;
+  font: inherit;
+  padding: 0.45rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #1f1f1f;
+  background: #f4f4f4;
+  cursor: pointer;
+}
+
+.projects-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.search-wrapper {
+  padding: 0.9rem;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.project-list {
+  padding: 1rem 0.9rem;
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-card + .project-card {
+  margin-top: 1rem;
+}
+
+.project-thumbnail {
+  width: 76px;
+  height: 76px;
+  border: 1px solid #252525;
+  border-radius: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.project-thumbnail span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background: #252525;
+}
+
+.project-thumbnail span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.project-thumbnail span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.project-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+}
+
+.project-card p {
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding-inline: 0.75rem;
+  }
+
+  .add-project-panel h2,
+  .project-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .add-project-form button {
+    width: 100%;
+  }
+}
