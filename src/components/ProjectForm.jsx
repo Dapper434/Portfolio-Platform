@@ -48,3 +48,5 @@ function ProjectForm({ onAddProject }) {
     </section>
   )
 }
+
+export default ProjectForm;
