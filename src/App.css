@@ -1,33 +1,36 @@
 .app-shell {
   width: min(1100px, 100%);
   margin: 0 auto;
-  padding: 2rem 1rem 2.5rem;
+  padding: 2.25rem 1rem 3rem;
 }
 
 .app-header {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.02em;
 }
 
 .app-subtitle {
-  margin: 0.35rem 0 0;
-  color: #444;
+  margin: 0.45rem 0 0;
+  color: var(--muted);
   font-size: 1rem;
 }
 
 .panel,
 .projects-panel {
-  border: 1px solid #1f1f1f;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 1.25rem;
-  background-color: #fff;
+  background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.03));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
 .app-layout {
@@ -51,7 +54,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 1rem;
 }
 
@@ -62,7 +65,7 @@
 
 .content-meta {
   margin: 0.25rem 0 0;
-  color: #555;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -72,7 +75,8 @@
 
 .add-project-panel h2 {
   margin: 0 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
 }
 
 .add-project-form {
@@ -81,18 +85,26 @@
 }
 
 .add-project-form label {
-  font-size: 1.05rem;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .add-project-form input,
 .add-project-form textarea,
 .search-wrapper input {
   width: 100%;
-  border: 1px solid #252525;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   font: inherit;
   padding: 0.7rem 0.75rem;
   box-sizing: border-box;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
 }
 
 .add-project-form textarea {
@@ -100,14 +112,38 @@
   min-height: 120px;
 }
 
+.add-project-form input:focus,
+.add-project-form textarea:focus,
+.search-wrapper input:focus {
+  border-color: rgba(124, 92, 255, 0.55);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
 .add-project-form button {
   width: 100%;
   font: inherit;
-  padding: 0.45rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid #1f1f1f;
-  background: #f4f4f4;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(124, 92, 255, 0.35);
+  background: linear-gradient(135deg, var(--accent), #5a3bff);
+  color: #fff;
   cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    transform 140ms ease,
+    filter 140ms ease,
+    box-shadow 140ms ease;
+  box-shadow: 0 14px 35px rgba(124, 92, 255, 0.28);
+}
+
+.add-project-form button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.add-project-form button:active {
+  transform: translateY(0);
 }
 
 .search-wrapper {
@@ -121,15 +157,25 @@
 .project-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.9rem;
-  border: 1px solid #ededed;
-  border-radius: 12px;
-  background: #fff;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.16);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
 }
 
 .project-card + .project-card {
   margin-top: 0.75rem;
+}
+
+.project-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(124, 92, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .project-card h3 {
@@ -139,11 +185,13 @@
 
 .project-card p {
   margin: 0;
+  color: var(--muted);
 }
 
 .empty-state {
   text-align: center;
   padding: 1.5rem 1rem;
+  color: var(--muted);
 }
 
 .sr-only {
