@@ -23,7 +23,7 @@ function ProjectForm({ onAddProject }) {
     setDescription('')
   }
 
-  return (, 
+  return ( 
     <section className="panel add-project-panel">
       <h2>Add Project</h2>
       <form onSubmit={handleSubmit} className="add-project-form">
