@@ -1,4 +1,4 @@
-import Product from './Product'
+import Product from './ProjectCard'
 
 function ProjectList({ projects }) {
   if (projects.length === 0) {
